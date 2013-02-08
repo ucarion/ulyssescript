@@ -71,13 +71,20 @@ CODE
     assert_equal "yeah!", Interpreter.new.interpret(code).value
   end
 
-#   def test_default_inherit_from_object
-#     code = <<-CODE
-# class Test:
-#   def bla:
-#     print("Hi!")
-
-
-# CODE
-#   end
+  def test_math_operators
+    assert_equal 3, Interpreter.new.interpret("1 + 2").value
+    assert_equal 5, Interpreter.new.interpret("6 - 1").value
+    assert_equal 42, Interpreter.new.interpret("6 * 7").value
+    assert_equal 2, Interpreter.new.interpret("5 / 2").value
+    assert Interpreter.new.interpret("2 > 1").value
+    assert !Interpreter.new.interpret("1 > 2").value
+    assert Interpreter.new.interpret("1 < 2").value
+    assert !Interpreter.new.interpret("2 < 1").value
+    assert Interpreter.new.interpret("1 >= 1").value
+    assert Interpreter.new.interpret("1 <= 1").value
+    assert Interpreter.new.interpret("1 == 1").value
+    assert !Interpreter.new.interpret("1 == 2").value
+    assert Interpreter.new.interpret("1 != 2").value
+    assert !Interpreter.new.interpret("1 != 1").value
+  end
 end

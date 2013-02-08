@@ -8,7 +8,7 @@
 # on Windows run with: ruby awesome [options]
 
 $:.unshift "." # Fix for Ruby 1.9
-require "interpreter"
+require_relative '.\interpreter'
 require "readline"
 
 interpreter = Interpreter.new
@@ -19,12 +19,17 @@ if file = ARGV.first
 
 # Start the REPL, read-eval-print-loop, or interactive interpreter
 else
-  puts "Ulysse's REPL, CTRL+C to quit"
+  puts "Ulysse's REPL, say 'quit' to exit"
   loop do
     line = Readline::readline(">> ")
     Readline::HISTORY.push(line)
+
+    if line == "quit"
+      puts "Bye!"
+      exit
+    end
+
     result = interpreter.interpret(line)
     puts "=> #{result.value.inspect}"
   end
-  
 end

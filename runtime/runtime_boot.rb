@@ -31,13 +31,39 @@ Runtime["true"] = Runtime["TrueClass"].new_with_value(true)
 Runtime["false"] = Runtime["FalseClass"].new_with_value(false)
 Runtime["nil"] = Runtime["NilClass"].new_with_value(nil)
 
+def add_std_method(class_name, method_name, &body)
+  Runtime[class_name].methods[method_name] = body
+end
+
+def add_std_methods(class_name, methods)
+  methods.each do |method|
+    Runtime[class_name].methods[method[0]] = method[1]
+  end
+end
+
 # Step 9: add the new method to class to allow syntax like Object.new
-Runtime["Class"].methods["new"] = proc do |receiver, args|
-   receiver.new
+add_std_method("Class", "new") do |receiver, args| 
+  receiver.new
 end
 
 # Step 10: add the print method
-Runtime["Object"].methods["print"] = proc do |receiver, args|
+add_std_method("Object", "print") do |receiver, args| 
   print args.first.value
-  Runtime["nil"] # note how I return my newly created nil, not Ruby's nil returned from print
+  Runtime["nil"]
 end
+
+# Step 11: make the basic math operations
+add_std_methods("Number", [
+  ["+", proc { |r, a| Runtime["Number"].new_with_value(r.value + a.first.value) }],
+  ["-", proc { |r, a| Runtime["Number"].new_with_value(r.value - a.first.value) }],
+  ["*", proc { |r, a| Runtime["Number"].new_with_value(r.value * a.first.value) }],
+  ["/", proc { |r, a| Runtime["Number"].new_with_value(r.value / a.first.value) }],
+  # ["%", proc { |r, a| Runtime["Number"].new_with_value(r.value % a.first.value) }],
+
+  [">", proc { |r, a| r.value > a.first.value ? Runtime["true"] : Runtime["false"] }],
+  ["<", proc { |r, a| r.value < a.first.value ? Runtime["true"] : Runtime["false"] }],
+  [">=", proc { |r, a| r.value >= a.first.value ? Runtime["true"] : Runtime["false"] }],
+  ["<=", proc { |r, a| r.value <= a.first.value ? Runtime["true"] : Runtime["false"] }],
+  ["==", proc { |r, a| r.value == a.first.value ? Runtime["true"] : Runtime["false"] }],
+  ["!=", proc { |r, a| r.value != a.first.value ? Runtime["true"] : Runtime["false"] }],
+])
