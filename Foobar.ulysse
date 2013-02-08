@@ -1,0 +1,6 @@
+class Test:
+  def foo:
+    print("Woo")
+
+t = Test.new
+t.foo

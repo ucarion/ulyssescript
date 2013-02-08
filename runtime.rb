@@ -1,0 +1,5 @@
+require_relative '.\runtime\runtime_object'
+require_relative '.\runtime\runtime_class'
+require_relative '.\runtime\runtime_method'
+require_relative '.\runtime\runtime_context'
+require_relative '.\runtime\runtime_boot'
