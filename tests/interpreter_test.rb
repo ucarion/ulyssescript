@@ -76,6 +76,7 @@ CODE
     assert_equal 5, Interpreter.new.interpret("6 - 1").value
     assert_equal 42, Interpreter.new.interpret("6 * 7").value
     assert_equal 2, Interpreter.new.interpret("5 / 2").value
+    assert_equal 6, Interpreter.new.interpret("16 % 10").value
     assert Interpreter.new.interpret("2 > 1").value
     assert !Interpreter.new.interpret("1 > 2").value
     assert Interpreter.new.interpret("1 < 2").value

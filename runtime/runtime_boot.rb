@@ -58,7 +58,7 @@ add_std_methods("Number", [
   ["-", proc { |r, a| Runtime["Number"].new_with_value(r.value - a.first.value) }],
   ["*", proc { |r, a| Runtime["Number"].new_with_value(r.value * a.first.value) }],
   ["/", proc { |r, a| Runtime["Number"].new_with_value(r.value / a.first.value) }],
-  # ["%", proc { |r, a| Runtime["Number"].new_with_value(r.value % a.first.value) }],
+  ["%", proc { |r, a| Runtime["Number"].new_with_value(r.value % a.first.value) }],
 
   [">", proc { |r, a| r.value > a.first.value ? Runtime["true"] : Runtime["false"] }],
   ["<", proc { |r, a| r.value < a.first.value ? Runtime["true"] : Runtime["false"] }],
