@@ -58,4 +58,8 @@ CODE
     ]
     assert_equal tokens, Lexer.new.tokenize(code)
   end
+
+  def test_comment
+    assert_equal Lexer.new.tokenize('3 > 2'), Lexer.new.tokenize('3 > 2 # comment')
+  end
 end

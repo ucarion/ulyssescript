@@ -1,11 +1,18 @@
-class Test:
-  def foo():
-    println("Woo")
+class Greeter:
+  def greet():
+    println("Hello, John Doe!")
   
-  def foo(a):
-    print("Woohoo ")
-    println(a)
+  def greet(name):
+    print("Hello, ")
+    println(name)
+  
+  def warn(name):
+    print("Danger, ")
+    print(name)
+    println("!")
 
-t = Test.new
-t.foo
-t.foo("Yeah")
+
+g = Greeter.new
+g.greet
+g.greet("there!")
+g.warn("Will Robinson")

@@ -104,6 +104,10 @@ class Lexer
       elsif chunk.match(/\A /)
         i += 1
       
+      # An octothorpe designates a comment -- ignore rest of line
+      elsif commentedout = chunk[/\A(#.*\n?)/, 1]
+        i += commentedout.size
+
       # Catch all single characters
       # We treat all other single characters as a token. Eg.: ( ) , . ! + - <
       else
