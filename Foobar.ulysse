@@ -1,6 +1,11 @@
 class Test:
-  def foo:
-    print("Woo")
+  def foo():
+    println("Woo")
+  
+  def foo(a):
+    print("Woohoo ")
+    println(a)
 
 t = Test.new
 t.foo
+t.foo("Yeah")

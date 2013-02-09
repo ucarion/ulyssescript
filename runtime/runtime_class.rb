@@ -25,13 +25,15 @@ class RuntimeClass < RuntimeObject
 
   # find a method or die trying -- the attempt at getting a superclass's
   # implementation is OOP.
-  def lookup(method)
-    if @methods[method]
-      @methods[method]
+  def lookup(method_name, args)
+    # puts "Looking up method #{method_name} with #{args} arguments"
+    if @methods[[method_name, args]]
+      # puts "Found #{method_name} (#{args} args)"
+      @methods[[method_name, args]]
     elsif @superclass
-      @superclass.lookup(method)
+      @superclass.lookup(method_name, args)
     else
-      raise "Method not found: #{method}"
+      raise "Method not found: #{method_name}"
     end
   end
 

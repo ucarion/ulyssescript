@@ -88,4 +88,18 @@ CODE
     assert Interpreter.new.interpret("1 != 2").value
     assert !Interpreter.new.interpret("1 != 1").value
   end
+
+  def test_method_overriding
+    code = <<-CODE
+def foo():
+  "no-args"
+
+def foo(x):
+  "yes-args"
+
+foo(3)
+CODE
+    
+    assert_equal "yes-args", Interpreter.new.interpret(code).value
+  end
 end

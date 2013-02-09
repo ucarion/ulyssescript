@@ -94,7 +94,7 @@ end
 
 class DefNode
   def eval(context)
-    context.curr_class.methods[name] = RuntimeMethod.new(params, body)
+    context.curr_class.methods[[name, params.length]] = RuntimeMethod.new(params, body)
   end
 end
 

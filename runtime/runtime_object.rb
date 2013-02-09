@@ -11,6 +11,6 @@ class RuntimeObject
 
   # Call a method on an object by asking its class to call the method if it exists.
   def call(method, args = [])
-    @runtime_class.lookup(method).call(self, args)
+    @runtime_class.lookup(method, args.length).call(self, args)
   end
 end
