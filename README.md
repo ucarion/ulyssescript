@@ -6,6 +6,7 @@ ulyssescript is a ruby-based language that has basic OOP and syntax that looks a
 
 Features:
 * Python-style indentation
+* Comments using `#`
 * Basic inheritance (everything inherits from Object)
 * `if`, `unless`, `while`, `until` control structures
 * `Object`, `Class`, `String`, `Number`, `true` (`TrueClass`), `false` (`FalseClass`), `nil` (`NilClass`)
@@ -27,10 +28,10 @@ class TrueClass:
 Which would allow you to do
 
 ```python
-s = "cuckoo! "
-print_twice(s)
+s = "cuckoo! " 
+print_twice(s)   # prints: "cuckoo! cuckoo!"
 
-print(true.to_s)
+print(true.to_s) # prints: "true"
 ```
 
 # Examples #
