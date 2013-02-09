@@ -102,4 +102,10 @@ CODE
     
     assert_equal "yes-args", Interpreter.new.interpret(code).value
   end
+
+  def test_string_methods
+    assert_equal "foobar", Interpreter.new.interpret('"foo" + "bar"').value
+    assert_equal "a", Interpreter.new.interpret('"bat".charAt(1)').value
+    assert_equal 4, Interpreter.new.interpret('"four".length').value
+  end
 end

@@ -74,5 +74,9 @@ add_std_methods("Number", [
   ["!=", 1, proc { |r, a| r.value != a.first.value ? Runtime["true"] : Runtime["false"] }],
 ])
 
-# p Runtime["Object"].methods
-# puts "\n\n"
+# Step 12: add basic string methods
+add_std_methods("String", [
+  ["+", 1, proc { |r, a| Runtime["String"].new_with_value(r.value + a.first.value) }],
+  ["charAt", 1, proc { |r, a| Runtime["String"].new_with_value(r.value[a.first.value]) }],
+  ["length", 0, proc { |r, a| Runtime["Number"].new_with_value(r.value.size) }],
+])

@@ -11,7 +11,6 @@ class Greeter:
     print(name)
     println("!")
 
-
 g = Greeter.new
 g.greet
 g.greet("there!")
