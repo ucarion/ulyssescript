@@ -63,13 +63,10 @@ class Greeter:
     println("Hello, John Doe!")
   
   def greet(name):
-    print("Hello, ")
-    println(name)
+    println("Hello, " + name)
   
   def warn(name):
-    print("Danger, ")
-    print(name)
-    println("!")
+    println("Danger, " + name + "!")
 
 
 g = Greeter.new
